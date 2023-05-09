@@ -54,11 +54,6 @@ function! ReplaceWithSameIndentRegister#Visual( repeatMapping, ... )
 	let l:save_view = winsaveview()
 	    silent normal! gv"_d
 	call winrestview(l:save_view)
-
-	if l:previousLineNum >= &report || l:newLineNum >= &report
-	    echomsg printf('Replaced %d line%s', l:previousLineNum, (l:previousLineNum == 1 ? '' : 's')) .
-	    \   (l:previousLineNum == l:newLineNum ? '' : printf(' with %d line%s', l:newLineNum, (l:newLineNum == 1 ? '' : 's')))
-	endif
     finally
 	if exists('l:save_reg')
 	    call setreg(l:actualRegister, l:save_reg, l:regtype)
